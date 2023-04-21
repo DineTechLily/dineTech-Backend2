@@ -11,8 +11,8 @@ mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`)
   .then(res => console.log("連線資料成功"));
 
 
-const indexRouter = require('./routes/index');
-const adminRouter = require('./routes/admin');
+// 後台
+const loginRouter = require('./back/routes/login');
 
 const app = express();
 
@@ -25,7 +25,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/admin', adminRouter);
+
+// 後台
+app.use('/admin/login', loginRouter);
 
 module.exports = app;
