@@ -1,12 +1,23 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+require('dotenv').config();
 
-var indexRouter = require('./routes/index');
-var adminRouter = require('./routes/admin');
+// 資料庫設定開始
+const mongoose = require('mongoose');
+mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`)
+  .then(res => console.log("連線資料成功"));
 
-var app = express();
+
+const indexRouter = require('./routes/index');
+const adminRouter = require('./routes/admin');
+
+const app = express();
+
+//cors
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
