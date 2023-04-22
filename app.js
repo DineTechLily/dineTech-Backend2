@@ -7,8 +7,14 @@ require('dotenv').config();
 
 // 資料庫設定開始
 const mongoose = require('mongoose');
-mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`)
-  .then();
+(async () => {
+  try {
+    await mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`);
+  } catch (err) {
+  }
+})();
+
+//前台
 
 
 // 後台
@@ -24,6 +30,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+//前台
 
 
 // 後台
