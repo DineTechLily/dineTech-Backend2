@@ -13,8 +13,6 @@ const mongoose = require('mongoose');
   } catch (err) {
   }
 })();
-// mongoose.connect('mongodb://localhost:27017/testPost6')
-//     .then(res=> console.log("連線資料成功"));
 
 // 前台API Router Import
 const custRouter = require('./front/routes/cust');
@@ -22,6 +20,7 @@ const empRouter = require('./front/routes/emp');
 
 // 後台
 const loginRouter = require('./back/routes/login');
+const productRouter = require('./back/routes/product');
 
 const app = express();
 
@@ -40,7 +39,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //前台
 app.use('/emp', empRouter);
 // app.use('/cust', custRouter);
+
 // 後台
 app.use('/admin/login', loginRouter);
+app.use('/admin/product', productRouter);
 
 module.exports = app;
