@@ -9,7 +9,12 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`)
   .then(res => console.log("連線資料成功"));
+// mongoose.connect('mongodb://localhost:27017/testPost6')
+//     .then(res=> console.log("連線資料成功"));
 
+// 前台API Router Import
+const custRouter = require('./front/routes/cust');
+const empRouter = require('./front/routes/emp');
 
 // 後台
 const loginRouter = require('./back/routes/login');
@@ -25,7 +30,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+//前台
+app.use('/emp', empRouter);
+// app.use('/cust', custRouter);
 // 後台
 app.use('/admin/login', loginRouter);
 
