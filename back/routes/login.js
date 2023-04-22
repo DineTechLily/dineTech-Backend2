@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
+const mongoose = require('mongoose');
+
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.send('login');
+  mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`)
+    .then(() => res.send("連線資料成功"));
 });
 
 module.exports = router;
