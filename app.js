@@ -6,9 +6,9 @@ const cors = require('cors');
 require('dotenv').config();
 
 // 資料庫設定開始
-// const mongoose = require('mongoose');
-// mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`)
-//   .then(res => console.log("連線資料成功"));
+const mongoose = require('mongoose');
+mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`)
+  .then();
 
 
 // 後台
