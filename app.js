@@ -15,8 +15,8 @@ const mongoose = require('mongoose');
 })();
 
 // 前台API Router Import
-const custRouter = require('./front/routes/cust');
-const empRouter = require('./front/routes/emp');
+// const custRouter = require('./front/routes/cust');
+// const empRouter = require('./front/routes/emp');
 
 // 後台
 const loginRouter = require('./back/routes/login');
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //前台
 
 //前台
-app.use('/emp', empRouter);
+// app.use('/emp', empRouter);
 // app.use('/cust', custRouter);
 
 // 後台
