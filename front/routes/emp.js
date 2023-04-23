@@ -42,7 +42,7 @@ router.post('/login', async function (req, res, next) {
     res.status(401).json(loginFailedError);
 
   // if password is incorrect
-  } else if (!bcrypt.compare(req.body.password, user.password)) {
+  } else if ( await bcrypt.compare(req.body.password, user.password) === false) {
     res.status(401).json(loginFailedError);
   
   // if the password is correct, generate the jwt token
