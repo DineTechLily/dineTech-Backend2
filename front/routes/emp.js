@@ -52,14 +52,14 @@ router.post('/login', async function (req, res, next) {
     });
     res.status(201).json({
       token: token,
-      messgae: 'login success'
+      message: 'login success'
     });
   }
 });
 
 router.post('/logout', async function (_, res) {
   res.status(201).json({
-    messgae: 'logout success, remember to remove token',
+    message: 'logout success, remember to remove token',
   });
 });
 
