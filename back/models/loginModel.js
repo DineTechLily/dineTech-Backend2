@@ -1,15 +1,15 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
   },
   account: {
     type: String,
-    required: [true, '請輸入您的帳號'],
+    required: [true, "請輸入您的帳號"],
   },
   password: {
     type: String,
-    required: [true, '請輸入您的密碼'],
+    required: [true, "請輸入您的密碼"],
   },
   permissions: {
     type: Array,
@@ -20,6 +20,6 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model("accounts", userSchema);
 
 module.exports = User;
