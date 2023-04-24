@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //前台
 
 //前台
-app.use('/emp', empRouter);
+// app.use('/emp', empRouter);
 // app.use('/cust', custRouter);
 
 // 後台
