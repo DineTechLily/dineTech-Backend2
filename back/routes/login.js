@@ -1,7 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const User = require('../models/loginModel'); // 引入使用者模型
+const jwt = require("jsonwebtoken");
+const User = require("../models/loginModel"); // 引入使用者模型
 
 // router.post('/', async (req, res, next) => {
 //   const { account, password } = req.body; // 從請求主體中取得帳號和密碼
@@ -36,13 +36,5 @@ const User = require('../models/loginModel'); // 引入使用者模型
 //     res.status(500).json({ message: '伺服器發生錯誤' });
 //   }
 // });
-router.get('/', async (req, res, next) => {
-  const rst = {
-    host: process.env.DB_HOST,
-    db: process.env.DB_NAME
-  }
-  res.status(200).json({
-    rst
-  })
-});
+
 module.exports = router;
