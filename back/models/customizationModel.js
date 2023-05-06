@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const productSchema = new mongoose.Schema({
+const customizationSchema = new mongoose.Schema({
   category: {
     type: String,
     enum: ['risotto', 'pasta', 'dessert', 'drink'],
@@ -25,12 +25,6 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "請輸入圖片URL"],
   },
-  customization: [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: "customization",
-    }
-  ],
   isRemoved: {
     type: Boolean,
     default: false
@@ -41,6 +35,6 @@ const productSchema = new mongoose.Schema({
   },
 });
 
-const Product = mongoose.model('product', productSchema);
+const Customization = mongoose.model('customization', customizationSchema);
 
-module.exports = Product;
+module.exports = Customization;

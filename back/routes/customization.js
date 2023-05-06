@@ -1,15 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../models/productModel');
 const Customization = require('../models/customizationModel');
 
-// 搜尋所有商品
+// 搜尋所有客製化選項
 router.get('/', async (req, res, next) => {
   try {
-    const data = await Product.find().populate({
-      path: 'customization',
-      select: '_id name'
-    });
+    const data = await Customization.find();
     res.status(200).json({
       "success": true,
       data
@@ -20,13 +16,12 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-
-// 新增單一商品
+// 新增單一客製化選項
 router.post('/', async (req, res, next) => {
-  const { category, name, cost, price, description, img, customization } = req.body;
-  const newProduct = { category, name, cost, price, description, img, customization };
+  const { category, name, cost, price, description, img } = req.body;
+  const newCustomization = { category, name, cost, price, description, img };
   try {
-    const data = await Product.create(newProduct);
+    const data = await Customization.create(newCustomization);
     res.status(200).json({
       "success": true,
       data
@@ -37,14 +32,14 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// 編輯單一商品
+// 編輯單一客製化選項
 router.patch('/', async (req, res, next) => {
-  const { _id, category, name, cost, price, description, img, customization } = req.body;
-  const updateProduct = { category, name, cost, price, description, img, customization };
+  const { _id, category, name, cost, price, description, img } = req.body;
+  const updateCustomization = { category, name, cost, price, description, img };
   try {
-    const data = await Product.findByIdAndUpdate(
+    const data = await Customization.findByIdAndUpdate(
       _id,
-      updateProduct,
+      updateCustomization,
       { new: true, }
     );
     res.status(200).json({
@@ -57,14 +52,14 @@ router.patch('/', async (req, res, next) => {
   }
 });
 
-// 移除單一商品
+// 移除單一客製化選項
 router.delete('/', async (req, res, next) => {
   const { _id, isRemoved } = req.body;
-  const removeProduct = { isRemoved };
+  const removeCustomization = { isRemoved };
   try {
-    const data = await Product.findByIdAndUpdate(
+    const data = await Customization.findByIdAndUpdate(
       _id,
-      removeProduct,
+      removeCustomization,
       { new: true, }
     );
     res.status(200).json({
