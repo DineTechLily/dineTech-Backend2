@@ -81,7 +81,30 @@ router.delete('/item', async (req, res, next) => {
 // 搜尋所有套餐
 router.get('/meal', async (req, res, next) => {
   try {
-    const data = await Meal.find();
+    const data = await Meal.find()
+    // .populate({
+    //   path: 'item',
+    //   model: 'Item'
+    // });
+    res.status(200).json({
+      "success": true,
+      data
+    });
+  }
+  catch (error) {
+    // console.log(error);
+    res.status(400).json({
+      message: error
+    })
+  }
+});
+
+// 新增單一套餐
+router.post('/meal', async (req, res, next) => {
+  const { name, mainCategory, main, hasDessert, dessert, hasDrink, drink } = req.body;
+  const newMeal = { name, mainCategory, main, hasDessert, dessert, hasDrink, drink };
+  try {
+    const data = await Meal.create(newMeal);
     res.status(200).json({
       "success": true,
       data
@@ -90,22 +113,6 @@ router.get('/meal', async (req, res, next) => {
   catch (error) {
     console.log(error);
   }
-});
-
-// 新增單一套餐
-router.post('/meal', async (req, res, next) => {
-  // const { product, name, stock } = req.body;
-  // const newItem = { product, name, stock };
-  // try {
-  //   const data = await Item.create(newItem);
-  //   res.status(200).json({
-  //     "success": true,
-  //     data
-  //   });
-  // }
-  // catch (error) {
-  //   console.log(error);
-  // }
 });
 
 module.exports = router;

@@ -13,6 +13,7 @@ const itemSchema = new mongoose.Schema({
   stock: {
     type: Number,
     required: [true, "請輸入庫存數量"],
+    min: 0
   },
   isRemoved: {
     type: Boolean,

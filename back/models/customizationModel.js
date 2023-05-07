@@ -12,10 +12,12 @@ const customizationSchema = new mongoose.Schema({
   cost: {
     type: Number,
     required: [true, "請輸入成本"],
+    min: 0
   },
   price: {
     type: Number,
     required: [true, "請輸入售價"],
+    min: 0
   },
   description: {
     type: String,
