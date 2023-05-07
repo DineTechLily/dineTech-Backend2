@@ -31,6 +31,7 @@ const empRouter = require('./front/routes/emp');
 const loginRouter = require('./back/routes/login');
 const productRouter = require('./back/routes/product');
 const customizationRouter = require('./back/routes/customization');
+const saleRouter = require('./back/routes/sale');
 
 const app = express();
 
@@ -54,5 +55,6 @@ app.use('/emp', empRouter);
 app.use('/admin/login', loginRouter);
 app.use('/admin/product', productRouter);
 app.use('/admin/customization', customizationRouter);
+app.use('/admin/sale', saleRouter);
 
 module.exports = app;

@@ -1,14 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/productModel');
-const Customization = require('../models/customizationModel');
 
 // 搜尋所有商品
 router.get('/', async (req, res, next) => {
   try {
     const data = await Product.find().populate({
-      path: 'customization',
-      select: '_id name'
+      path: 'customization'
     });
     res.status(200).json({
       "success": true,
@@ -33,7 +31,10 @@ router.post('/', async (req, res, next) => {
     });
   }
   catch (error) {
-    console.log(error);
+    // console.log(error);
+    res.status(400).json({
+      "message": error
+    })
   }
 });
 
