@@ -5,9 +5,10 @@ const Product = require('../models/productModel');
 // 搜尋所有商品
 router.get('/', async (req, res, next) => {
   try {
-    const data = await Product.find().populate({
-      path: 'customization'
-    });
+    const data = await Product.find()
+    // .populate({
+    //   path: 'customization'
+    // });
     res.status(200).json({
       "success": true,
       data

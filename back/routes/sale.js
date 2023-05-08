@@ -6,12 +6,13 @@ const Meal = require('../models/mealModel');
 // 搜尋所有項目
 router.get('/item', async (req, res, next) => {
   try {
-    const data = await Item.find().populate({
-      path: 'product',
-      populate: {
-        path: 'customization',
-      }
-    });
+    const data = await Item.find()
+    // .populate({
+    //   path: 'product',
+    //   populate: {
+    //     path: 'customization',
+    //   }
+    // });
     res.status(200).json({
       "success": true,
       data
@@ -92,17 +93,14 @@ router.get('/meal', async (req, res, next) => {
     });
   }
   catch (error) {
-    // console.log(error);
-    res.status(400).json({
-      message: error
-    })
+    console.log(error);
   }
 });
 
 // 新增單一套餐
 router.post('/meal', async (req, res, next) => {
-  const { name, mainCategory, main, hasDessert, dessert, hasDrink, drink } = req.body;
-  const newMeal = { name, mainCategory, main, hasDessert, dessert, hasDrink, drink };
+  const { name, category, main, hasDessert, dessert, hasDrink, drink } = req.body;
+  const newMeal = { name, category, main, hasDessert, dessert, hasDrink, drink };
   try {
     const data = await Meal.create(newMeal);
     res.status(200).json({

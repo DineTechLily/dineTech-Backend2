@@ -25,6 +25,13 @@ const itemSchema = new mongoose.Schema({
   },
 });
 
+itemSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'product'
+  });
+  next();
+})
+
 const Item = mongoose.model('item', itemSchema);
 
 module.exports = Item;

@@ -43,6 +43,13 @@ const productSchema = new mongoose.Schema({
   },
 });
 
+productSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'customization'
+  });
+  next();
+})
+
 const Product = mongoose.model('product', productSchema);
 
 module.exports = Product;
