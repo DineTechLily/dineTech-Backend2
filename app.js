@@ -24,8 +24,11 @@ const mongoose = require('mongoose');
 
 
 // 前台API Router Import
-// const custRouter = require('./front/routes/cust');
-const empRouter = require('./front/routes/emp');
+const custMenuRouter = require('./front/routes/custMenu');
+const custFeedbackRouter = require('./front/routes/custFeedback');
+
+
+const empRouter = require('./front/routes/empLogin');
 
 // 後台
 const loginRouter = require('./back/routes/login');
@@ -45,11 +48,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//前台
-
-//前台
+//前台employee
 app.use('/emp', empRouter);
-// app.use('/cust', custRouter);
+
+//前台customer
+app.use('/cust/menu', custMenuRouter);
+app.use('/cust/feedback', custFeedbackRouter);
 
 // 後台
 app.use('/admin/login', loginRouter);

@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const Account = require("../models/empModels");
+const Account = require("../models/empLoginModels");
 
 // message
 const loginFailedError = { message: 'Login Failed, Please Try Again!' };
@@ -11,7 +11,7 @@ const loginFailedError = { message: 'Login Failed, Please Try Again!' };
 // register just for testing purposes
 router.post('/register', async function (req, res) {
   password = await bcrypt.hash(req.body.password, 12);
-  console.log(req.body.emp_id+req.body.emp_id)
+  //console.log(req.body.emp_id+req.body.emp_id)
   const newAccount = await Account.create({
     account : req.body.company_id + req.body.emp_id,
     password: password
@@ -64,10 +64,3 @@ router.post('/logout', async function (_, res) {
 });
 
 module.exports = router;
-
-// router.get('/', async function (req, res) {
-//   res.status(200).json({
-//     "test":"test"
-//   });
-// });
-
