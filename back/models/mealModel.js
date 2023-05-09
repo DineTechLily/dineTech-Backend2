@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const mealSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -6,14 +6,14 @@ const mealSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['risotto', 'pasta'],
+    enum: ["risotto", "pasta"],
     required: [true, "請選擇主餐"],
   },
   main: [
     {
       type: mongoose.Schema.ObjectId,
       ref: "item",
-    }
+    },
   ],
   hasDessert: {
     type: Boolean,
@@ -23,7 +23,7 @@ const mealSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.ObjectId,
       ref: "item",
-    }
+    },
   ],
   hasDrink: {
     type: Boolean,
@@ -33,27 +33,27 @@ const mealSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.ObjectId,
       ref: "item",
-    }
+    },
   ],
   isRemoved: {
     type: Boolean,
-    default: false
+    default: false,
   },
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
 });
 
-// mealSchema.pre(/^find/, function (next) {
-//   this.populate(
-//     {
-//       path: 'item'
-//     }
-//   );
-//   next();
-// })
+mealSchema.pre(/^find/, function (next) {
+  this.populate([
+    { path: "main", model: "item" },
+    { path: "dessert", model: "item" },
+    { path: "drink", model: "item" },
+  ]);
+  next();
+});
 
-const Meal = mongoose.model('meal', mealSchema);
+const Meal = mongoose.model("meal", mealSchema);
 
 module.exports = Meal;

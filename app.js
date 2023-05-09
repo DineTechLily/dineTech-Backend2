@@ -1,64 +1,60 @@
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const cors = require('cors');
-require('dotenv').config();
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const cors = require("cors");
+require("dotenv").config();
 
 // 資料庫設定開始
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+(async () => {
+  try {
+    await mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`);
+  } catch (err) {}
+})();
+
+//本地端資料庫測試用
 // (async () => {
 //   try {
-//     await mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`);
+//     await mongoose.connect('mongodb://127.0.0.1:27017/test');
 //   } catch (err) {
 //   }
 // })();
 
-//本地端資料庫測試用
-(async () => {
-  try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/test');
-  } catch (err) {
-  }
-})();
-
-
 // 前台API Router Import
-const custMenuRouter = require('./front/routes/custMenu');
-const custFeedbackRouter = require('./front/routes/custFeedback');
+const custMenuRouter = require("./front/routes/custMenu");
+const custFeedbackRouter = require("./front/routes/custFeedback");
 
-
-const empRouter = require('./front/routes/empLogin');
+const empRouter = require("./front/routes/empLogin");
 
 // 後台
-const loginRouter = require('./back/routes/login');
-const productRouter = require('./back/routes/product');
-const customizationRouter = require('./back/routes/customization');
-const saleRouter = require('./back/routes/sale');
+const loginRouter = require("./back/routes/login");
+const productRouter = require("./back/routes/product");
+const customizationRouter = require("./back/routes/customization");
+const saleRouter = require("./back/routes/sale");
 
 const app = express();
 
 //cors
 app.use(cors());
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, "public")));
 
 //前台employee
-app.use('/emp', empRouter);
+app.use("/emp", empRouter);
 
 //前台customer
-app.use('/cust/menu', custMenuRouter);
-app.use('/cust/feedback', custFeedbackRouter);
+app.use("/cust/menu", custMenuRouter);
+app.use("/cust/feedback", custFeedbackRouter);
 
 // 後台
-app.use('/admin/login', loginRouter);
-app.use('/admin/product', productRouter);
-app.use('/admin/customization', customizationRouter);
-app.use('/admin/sale', saleRouter);
+app.use("/admin/login", loginRouter);
+app.use("/admin/product", productRouter);
+app.use("/admin/customization", customizationRouter);
+app.use("/admin/sale", saleRouter);
 
 module.exports = app;
