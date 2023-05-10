@@ -82,11 +82,7 @@ router.delete('/item', async (req, res, next) => {
 // 搜尋所有套餐
 router.get('/meal', async (req, res, next) => {
   try {
-    const data = await Meal.find()
-    // .populate({
-    //   path: 'item',
-    //   model: 'Item'
-    // });
+    const data = await Meal.find();
     res.status(200).json({
       "success": true,
       data
@@ -114,3 +110,43 @@ router.post('/meal', async (req, res, next) => {
 });
 
 module.exports = router;
+
+// 編輯單一套餐
+router.patch('/meal', async (req, res, next) => {
+  const { _id, name, category, main, hasDessert, dessert, hasDrink, drink } = req.body;
+  const updateMeal = { name, category, main, hasDessert, dessert, hasDrink, drink };
+  try {
+    const data = await Meal.findByIdAndUpdate(
+      _id,
+      updateMeal,
+      { new: true, }
+    );
+    res.status(200).json({
+      "success": true,
+      data
+    });
+  }
+  catch (error) {
+    console.log(error);
+  }
+});
+
+// 移除單一套餐
+router.delete('/meal', async (req, res, next) => {
+  const { _id, isRemoved } = req.body;
+  const removeMeal = { isRemoved };
+  try {
+    const data = await Meal.findByIdAndUpdate(
+      _id,
+      removeMeal,
+      { new: true, }
+    );
+    res.status(200).json({
+      "success": true,
+      data
+    });
+  }
+  catch (error) {
+    console.log(error);
+  }
+});

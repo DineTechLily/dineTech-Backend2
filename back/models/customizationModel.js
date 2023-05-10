@@ -3,29 +3,29 @@ const customizationSchema = new mongoose.Schema({
   category: {
     type: String,
     enum: ['risotto', 'pasta', 'dessert', 'drink'],
-    required: [true, "請選擇分類"],
+    required: [true, '請選擇分類'],
   },
   name: {
     type: String,
-    required: [true, "請輸入名稱"],
+    required: [true, '請輸入名稱'],
   },
   cost: {
     type: Number,
-    required: [true, "請輸入成本"],
+    required: [true, '請輸入成本'],
     min: 0
   },
   price: {
     type: Number,
-    required: [true, "請輸入售價"],
+    required: [true, '請輸入售價'],
     min: 0
   },
   description: {
     type: String,
-    required: [true, "請輸入介紹"],
+    required: [true, '請輸入介紹'],
   },
   img: {
     type: String,
-    required: [true, "請輸入圖片URL"],
+    required: [true, '請輸入圖片URL'],
   },
   isRemoved: {
     type: Boolean,

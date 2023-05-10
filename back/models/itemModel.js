@@ -3,16 +3,16 @@ const itemSchema = new mongoose.Schema({
   product:
   {
     type: mongoose.Schema.ObjectId,
-    ref: "product",
+    ref: 'product',
   }
   ,
   name: {
     type: String,
-    required: [true, "請輸入名稱"],
+    required: [true, '請輸入名稱'],
   },
   stock: {
     type: Number,
-    required: [true, "請輸入庫存數量"],
+    required: [true, '請輸入庫存數量'],
     min: 0
   },
   isRemoved: {
@@ -27,7 +27,8 @@ const itemSchema = new mongoose.Schema({
 
 itemSchema.pre(/^find/, function (next) {
   this.populate({
-    path: 'product'
+    path: 'product',
+    model: 'product',
   });
   next();
 })
