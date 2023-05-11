@@ -6,7 +6,7 @@ const mealSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['risotto', 'pasta'],
+    enum: ['risottoMeal', 'pastaMeal'],
     required: [true, '請選擇主餐'],
   },
   main: [

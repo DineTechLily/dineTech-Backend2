@@ -49,7 +49,7 @@ productSchema.pre(/^find/, function (next) {
     model: 'customization'
   });
   next();
-})
+});
 
 const Product = mongoose.model('product', productSchema);
 

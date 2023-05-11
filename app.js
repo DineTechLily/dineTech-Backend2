@@ -5,8 +5,10 @@ const logger = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
 
-// 資料庫設定開始
+// 資料庫
 const mongoose = require("mongoose");
+
+//雲端資料庫
 (async () => {
   try {
     await mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`);
@@ -17,7 +19,9 @@ const mongoose = require("mongoose");
 // (async () => {
 //   try {
 //     await mongoose.connect('mongodb://127.0.0.1:27017/test');
+//     console.log('資料庫連線成功');
 //   } catch (err) {
+//     console.log('資料庫連線失敗');
 //   }
 // })();
 
@@ -32,6 +36,7 @@ const loginRouter = require("./back/routes/login");
 const productRouter = require("./back/routes/product");
 const customizationRouter = require("./back/routes/customization");
 const saleRouter = require("./back/routes/sale");
+const discountRouter = require("./back/routes/discount");
 
 const app = express();
 
@@ -56,5 +61,6 @@ app.use("/admin/login", loginRouter);
 app.use("/admin/product", productRouter);
 app.use("/admin/customization", customizationRouter);
 app.use("/admin/sale", saleRouter);
+app.use("/admin/discount", discountRouter);
 
 module.exports = app;

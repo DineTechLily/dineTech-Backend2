@@ -31,7 +31,7 @@ itemSchema.pre(/^find/, function (next) {
     model: 'product',
   });
   next();
-})
+});
 
 const Item = mongoose.model('item', itemSchema);
 
