@@ -35,8 +35,8 @@ router.post('/item', async (req, res, next) => {
 
 // 編輯單一項目
 router.patch('/item', async (req, res, next) => {
-  const { _id, product, name, stock } = req.body;
-  const updateItem = { product, name, stock };
+  const { _id, name, stock } = req.body;
+  const updateItem = { name, stock };
   try {
     const data = await Item.findByIdAndUpdate(
       _id,
