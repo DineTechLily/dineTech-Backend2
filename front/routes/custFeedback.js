@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Feedback = require('../models/feedBackModel');
+const Feedback = require('../models/custFeedbackModel');
 
 router.post('/', async function (req, res, next) {
   const { quality, process, speed, flavor, price, sanitation, impress, feeback } = req.body;
