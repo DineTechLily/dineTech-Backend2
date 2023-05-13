@@ -12,7 +12,9 @@ const mongoose = require("mongoose");
 (async () => {
   try {
     await mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`);
-  } catch (err) {}
+  } catch (err) {
+    console.log(err)
+  }
 })();
 
 //本地端資料庫測試用

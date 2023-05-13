@@ -27,6 +27,12 @@ router.post('/login', async function (req, res, next) {
   // corresponds to the request
   const { company_id, emp_id, password } = req.body;
   const account = req.body.company_id + req.body.emp_id;
+  console.log("a")
+  // get user account and password
+  const user = await Account.findOne({account: account}).select('+password')
+  console.log("b")
+  const vertify = await bcrypt.compare(req.body.password, user.password)
+  console.log("c")
   try{
     // cannot leave the empty space
     if (!emp_id || !password || !company_id) {
@@ -34,22 +40,17 @@ router.post('/login', async function (req, res, next) {
         message: 'Cannot Leave Empty Blank'
       });
     }
-    console.log("a")
-    // get user account and password
-    const user = await Account.findOne({account: account}).select('+password')
-
-    console.log("a")
+    
     // if the user existed
     if (!user) {
       res.status(401).json(loginFailedError);
-
     // if password is incorrect
-    } else if ( await bcrypt.compare(req.body.password, user.password) === false) {
+    } else if (vertify === false) {
       res.status(401).json(loginFailedError);
-    
+      console.log("d")
     // if the password is correct, generate the jwt token
     } else {
-      console.log("a3")
+      console.log("e")
       const token = jwt.sign({account},"SecrEt",{
         expiresIn: 1
       });
