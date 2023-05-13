@@ -9,22 +9,25 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 
 // 雲端資料庫
-// (async () => {
-//   try {
-//     await mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`);
-//   } catch (err) {
-//   }
-// })();
-
-//本地端資料庫測試用
 (async () => {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/test');
-    console.log('資料庫連線成功');
+    await mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`);
+    console.log('雲端資料庫連線成功');
   } catch (err) {
-    console.log('資料庫連線失敗');
+    console.log('雲端資料庫連線失敗');
+    console.log(err)
   }
 })();
+
+//本地端資料庫測試用
+// (async () => {
+//   try {
+//     await mongoose.connect('mongodb://127.0.0.1:27017/test');
+//     console.log('資料庫連線成功');
+//   } catch (err) {
+//     console.log('資料庫連線失敗');
+//   }
+// })();
 
 // 前台API Router Import
 const custMenuRouter = require("./front/routes/custMenu");
