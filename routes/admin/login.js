@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const User = require("../models/loginModel"); // 引入使用者模型
+const User = require("../../models/loginModel"); // 引入使用者模型
 
 router.post("/", async (req, res, next) => {
   const { account, password } = req.body; // 從請求主體中取得帳號和密碼
