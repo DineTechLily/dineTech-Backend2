@@ -10,8 +10,7 @@ const empLogin = {
     password = await bcrypt.hash(req.body.password, 12);
     //console.log(req.body.emp_id+req.body.emp_id)
     const newAccount = await Account.create({
-      componyId: req.body.company_id,
-      account: req.body.emp_id,
+      account: req.body.company_id + req.body.emp_id,
       password: password,
     });
     res.status(200).json({
