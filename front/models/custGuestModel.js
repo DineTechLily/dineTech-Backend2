@@ -6,7 +6,7 @@ const guestSchema = new mongoose.Schema(
       required: true
     },
     table_id: {
-      type: Date,
+      type: String
     },
     people: {
       type: Number,

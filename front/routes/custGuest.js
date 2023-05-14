@@ -3,18 +3,19 @@ const router = express.Router();
 const Guest = require('../models/custGuestModel');
 
 router.post('/', async function (req, res, next) {
-  const { time, table, people} = req.body;
+  const { time, table, people, table_id } = req.body;
+  const newGuest = { time, table, people, table_id };
 
-  // const table_id = generateTableId( time, table, people );
-
-  // const newGuest = { time, table, people, table_id };
-  const newGuest = { time, table, people };
   try {
     const data = await Guest.create(newGuest);
+    const table_id = data._id.toString()
+
     res.status(200).json({
       "success": true,
       "message": "send data success",
-      "data": data
+      "data": {
+        "table_id": table_id,
+      }
     });
   }
   catch (error) {
@@ -23,9 +24,5 @@ router.post('/', async function (req, res, next) {
     })
   }
 });
-
-// function generateTableId(time){
-//   return table_id;
-// }
 
 module.exports = router;
