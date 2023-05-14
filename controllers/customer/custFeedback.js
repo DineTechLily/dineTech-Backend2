@@ -10,7 +10,7 @@ const feedback = {
       price,
       sanitation,
       impress,
-      feeback,
+      feedback,
     } = req.body;
     const newFeedback = {
       quality,
@@ -20,8 +20,9 @@ const feedback = {
       price,
       sanitation,
       impress,
-      feeback,
+      feedback,
     };
+    
     try {
       const data = await Feedback.create(newFeedback);
       res.status(200).json({

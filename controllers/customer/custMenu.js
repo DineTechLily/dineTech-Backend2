@@ -1,7 +1,7 @@
 const Menu = require("../../models/menuModel");
 
 const menu = {
-  async getAllMenu(_, res, next) {
+  async getAllMenu(_, res) {
     try {
       const data = await Menu.find();
 

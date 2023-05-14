@@ -6,7 +6,11 @@ require("dotenv").config();
 (async () => {
   try {
     await mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`);
-  } catch (err) {}
+    console.log("雲端資料庫連線成功");
+  } catch (err) {
+    console.log("雲端資料庫連線失敗");
+    console.log(err)
+  }
 })();
 
 //本地端資料庫測試用

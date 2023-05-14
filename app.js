@@ -8,12 +8,12 @@ require("dotenv").config();
 // 資料庫
 const mongoose = require("mongoose");
 
-//雲端資料庫
-(async () => {
-  try {
-    await mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`);
-  } catch (err) {}
-})();
+// //雲端資料庫
+// (async () => {
+//   try {
+//     await mongoose.connect(`${process.env.DB_HOST}${process.env.DB_NAME}`);
+//   } catch (err) {}
+// })();
 
 //本地端資料庫測試用
 // (async () => {
@@ -26,8 +26,8 @@ const mongoose = require("mongoose");
 // })();
 
 // 前台API Router Import
-const custMenuRouter = require("./front/routes/custMenu");
-const custFeedbackRouter = require("./front/routes/custFeedback");
+const custMenuRouter = require("./routes/customer/custMenu");
+const custFeedbackRouter = require("./routes/customer/custFeedback");
 
 const empRouter = require("./routes/employee/empLogin");
 
@@ -53,7 +53,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //前台customer
 app.use("/cust/menu", custMenuRouter);
-app.use("/cust/guest", custGuestRouter);
+// app.use("/cust/guest", custGuestRouter);
 app.use("/cust/feedback", custFeedbackRouter);
 
 //前台employee
