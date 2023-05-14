@@ -38,7 +38,7 @@ app.use("/cust/feedback", custFeedbackRouter);
 app.use("/emp", empRouter);
 
 // 後台
-app.use("/admin/login", loginRouter);
+app.use("/admin", loginRouter);
 app.use("/admin/product", productRouter);
 app.use("/admin/customization", customizationRouter);
 app.use("/admin/sale", saleRouter);
