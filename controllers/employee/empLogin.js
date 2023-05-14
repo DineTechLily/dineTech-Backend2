@@ -5,7 +5,7 @@ const Account = require("../../models/staffLoginModels");
 // message
 const loginFailedError = { message: "Login Failed, Please Try Again!" };
 
-const empLogin = {
+const Login = {
   async register(req, res) {
     try {
       password = await bcrypt.hash(req.body.password, 12);
@@ -73,4 +73,4 @@ const empLogin = {
     }
   },
 };
-module.exports = empLogin;
+module.exports = Login;

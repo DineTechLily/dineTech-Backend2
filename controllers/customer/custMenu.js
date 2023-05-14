@@ -1,13 +1,12 @@
-const Menu = require("../../models/custMenuModel");
+const Product = require("../../models/productModel");
 
 const menu = {
-  async getAllMenu(_, res) {
+  async getMenu(_, res) {
     try {
-      const data = await Menu.find();
-
+      const data = await Product.find();
       res.status(200).json({
         success: true,
-        data: data,
+        data,
       });
     } catch (error) {
       console.log(error);

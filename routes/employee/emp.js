@@ -1,12 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const empLoginControllers = require("../../controllers/employee/empLogin");
+const LoginControllers = require("../../controllers/employee/empLogin");
+// const TableControllers = require("../../controllers/employee/empTable");
+// const DoneControllers = require("../../controllers/employee/empDone");
+// const OrderControllers = require("../../controllers/employee/empOrder");
+// const CheckControllers = require("../../controllers/employee/empCheck");
 
 // register just for testing purposes
-router.post("/register", empLoginControllers.register);
-router.post("/login", empLoginControllers.login);
-router.post("/logout", empLoginControllers.logout);
+router.post("/register", LoginControllers.register);
+router.post("/login", LoginControllers.login);
+router.post("/logout", LoginControllers.logout);
 
+// router.get("/table", TableControllers.);
+// router.get("/table/:table_id", TableControllers.);
 
+// router.get("/done/:table_id", DoneControllers.);
+
+// router.patch("/order", OrderControllers.);
+// router.patch("/check", CheckControllers.);
 
 module.exports = router;

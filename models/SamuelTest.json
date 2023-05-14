@@ -1,0 +1,261 @@
+{
+    "success": true,
+    "data": [
+        {
+            "_id": "645f406fc698cb531da85e1e",
+            "category": "risotto",
+            "name": "risotto商品1a",
+            "cost": 80,
+            "price": 138,
+            "description": "描述1a",
+            "img": "url",
+            "customization": [
+                {
+                    "_id": "645f369bc698cb531da85e08",
+                    "category": "risotto",
+                    "name": "risotto客製化1",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述1",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:04:59.380Z",
+                    "__v": 0
+                },
+                {
+                    "_id": "645f37a4c698cb531da85e0b",
+                    "category": "risotto",
+                    "name": "risotto客製化2",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述2",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:09:24.116Z",
+                    "__v": 0
+                }
+            ],
+            "isRemoved": false,
+            "createdAt": "2023-05-13T07:46:55.859Z",
+            "__v": 0
+        },
+        {
+            "_id": "645f4083c698cb531da85e22",
+            "category": "risotto",
+            "name": "risotto商品2a",
+            "cost": 80,
+            "price": 138,
+            "description": "描述2a",
+            "img": "url",
+            "customization": [
+                {
+                    "_id": "645f37a4c698cb531da85e0b",
+                    "category": "risotto",
+                    "name": "risotto客製化2",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述2",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:09:24.116Z",
+                    "__v": 0
+                }
+            ],
+            "isRemoved": false,
+            "createdAt": "2023-05-13T07:47:15.000Z",
+            "__v": 0
+        },
+        {
+            "_id": "645f40b8c698cb531da85e26",
+            "category": "pasta",
+            "name": "pasta商品1a",
+            "cost": 80,
+            "price": 138,
+            "description": "描述1a",
+            "img": "url",
+            "customization": [
+                {
+                    "_id": "645f37f5c698cb531da85e0e",
+                    "category": "pasta",
+                    "name": "pasta客製化1",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述1",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:10:45.317Z",
+                    "__v": 0
+                },
+                {
+                    "_id": "645f3800c698cb531da85e11",
+                    "category": "pasta",
+                    "name": "pasta客製化2",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述2",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:10:56.389Z",
+                    "__v": 0
+                }
+            ],
+            "isRemoved": false,
+            "createdAt": "2023-05-13T07:48:08.956Z",
+            "__v": 0
+        },
+        {
+            "_id": "645f40cdc698cb531da85e2a",
+            "category": "pasta",
+            "name": "pasta商品2a",
+            "cost": 80,
+            "price": 138,
+            "description": "描述2a",
+            "img": "url",
+            "customization": [
+                {
+                    "_id": "645f37f5c698cb531da85e0e",
+                    "category": "pasta",
+                    "name": "pasta客製化1",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述1",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:10:45.317Z",
+                    "__v": 0
+                }
+            ],
+            "isRemoved": false,
+            "createdAt": "2023-05-13T07:48:29.539Z",
+            "__v": 0
+        },
+        {
+            "_id": "645f418cc698cb531da85e2e",
+            "category": "dessert",
+            "name": "dessert商品1a",
+            "cost": 80,
+            "price": 138,
+            "description": "描述1a",
+            "img": "url",
+            "customization": [
+                {
+                    "_id": "645f394bc698cb531da85e14",
+                    "category": "dessert",
+                    "name": "dessert客製化1",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述1",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:16:27.322Z",
+                    "__v": 0
+                },
+                {
+                    "_id": "645f3951c698cb531da85e16",
+                    "category": "dessert",
+                    "name": "dessert客製化2",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述2",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:16:33.204Z",
+                    "__v": 0
+                }
+            ],
+            "isRemoved": false,
+            "createdAt": "2023-05-13T07:51:40.061Z",
+            "__v": 0
+        },
+        {
+            "_id": "645f419cc698cb531da85e32",
+            "category": "dessert",
+            "name": "dessert商品2a",
+            "cost": 80,
+            "price": 138,
+            "description": "描述2a",
+            "img": "url",
+            "customization": [
+                {
+                    "_id": "645f394bc698cb531da85e14",
+                    "category": "dessert",
+                    "name": "dessert客製化1",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述1",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:16:27.322Z",
+                    "__v": 0
+                }
+            ],
+            "isRemoved": false,
+            "createdAt": "2023-05-13T07:51:56.607Z",
+            "__v": 0
+        },
+        {
+            "_id": "645f41f4c698cb531da85e36",
+            "category": "drink",
+            "name": "drink商品1a",
+            "cost": 80,
+            "price": 138,
+            "description": "描述1a",
+            "img": "url",
+            "customization": [
+                {
+                    "_id": "645f395fc698cb531da85e18",
+                    "category": "drink",
+                    "name": "drink客製化1",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述1",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:16:47.286Z",
+                    "__v": 0
+                },
+                {
+                    "_id": "645f3962c698cb531da85e1a",
+                    "category": "drink",
+                    "name": "drink客製化2",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述2",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:16:50.967Z",
+                    "__v": 0
+                }
+            ],
+            "isRemoved": false,
+            "createdAt": "2023-05-13T07:53:24.326Z",
+            "__v": 0
+        },
+        {
+            "_id": "645f4202c698cb531da85e3a",
+            "category": "drink",
+            "name": "drink商品2a",
+            "cost": 80,
+            "price": 138,
+            "description": "描述2a",
+            "img": "url",
+            "customization": [
+                {
+                    "_id": "645f3962c698cb531da85e1a",
+                    "category": "drink",
+                    "name": "drink客製化2",
+                    "cost": 15,
+                    "price": 30,
+                    "description": "描述2",
+                    "img": "url",
+                    "isRemoved": false,
+                    "createdAt": "2023-05-13T07:16:50.967Z",
+                    "__v": 0
+                }
+            ],
+            "isRemoved": false,
+            "createdAt": "2023-05-13T07:53:38.861Z",
+            "__v": 0
+        }
+    ]
+}
