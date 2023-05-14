@@ -1,7 +1,7 @@
-const Feedback = require("../../models/feedBackModel");
+const Feedback = require("../../models/custFeedbackModel");
 
 const feedback = {
-  async custFeedback(req, res, next) {
+  async postFeedback(req, res, next) {
     const {
       quality,
       process,
@@ -22,7 +22,7 @@ const feedback = {
       impress,
       feedback,
     };
-    
+
     try {
       const data = await Feedback.create(newFeedback);
       res.status(200).json({
