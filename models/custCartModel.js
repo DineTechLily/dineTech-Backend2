@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const cartSchema = new mongoose.Schema(
   {
-    "_id": {
+    "order_id": {
       type: String,
       required: true
     },
@@ -17,9 +17,6 @@ const cartSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
-    // "customization": {
-
-    // },
     "description": {
       type: String,
       required: true
@@ -28,9 +25,26 @@ const cartSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    "time": {
-      type: Date,
-      required: true
+    "cust_name1": {
+      type: String
+    },
+    "cust_description1": {
+      type: String
+    },
+    "cust_price1": {
+      type: Number
+    },
+    "cust_name2": {
+      type: String
+    },
+    "cust_description2": {
+      type: String
+    },
+    "cust_price2": {
+      type: Number
+    },
+    "edit_id": {
+      type: String,
     },
   }
 );

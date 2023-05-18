@@ -8,6 +8,9 @@ const guestSchema = new mongoose.Schema(
     table_id: {
       type: String
     },
+    order_id: {
+      type: String
+    },
     people: {
       type: Number,
       required: true

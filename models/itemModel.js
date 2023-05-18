@@ -4,8 +4,7 @@ const itemSchema = new mongoose.Schema({
   {
     type: mongoose.Schema.ObjectId,
     ref: 'product',
-  }
-  ,
+  },
   name: {
     type: String,
     required: [true, '請輸入名稱'],

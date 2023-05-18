@@ -7,9 +7,9 @@ const LoginControllers = require("../../controllers/employee/empLogin");
 // const CheckControllers = require("../../controllers/employee/empCheck");
 
 // register just for testing purposes
-router.post("/register", LoginControllers.register);
-router.post("/login", LoginControllers.login);
-router.post("/logout", LoginControllers.logout);
+router.post("/register",  LoginControllers.register);
+router.post("/login",     LoginControllers.login);
+router.post("/logout",    LoginControllers.logout);
 
 // router.get("/table", TableControllers.);
 // router.get("/table/:table_id", TableControllers.);

@@ -10,7 +10,7 @@ router.get("/menu",                   MenuControllers.getMenu);
 
 router.post("/guest",                 GuestControllers.postGuest);
 
-router.get("/cart/:table_id",         CartControllers.getCart);
+router.get("/cart/:order_id",         CartControllers.getCart);
 router.post("/cart",                  CartControllers.postCart);
 router.patch("/cart",                 CartControllers.patchCart);
 router.delete("/cart",                CartControllers.deleteCart);
@@ -19,6 +19,5 @@ router.delete("/cart",                CartControllers.deleteCart);
 // router.post("/order",            OrderCoetrollers.postOrder);    
 
 router.post("/feedback",              FeedbackControllers.postFeedback);
-
 
 module.exports = router;
