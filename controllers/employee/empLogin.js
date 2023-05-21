@@ -22,7 +22,7 @@ const Login = {
       console.log(error);
     }
   },
-  async login(req, res, next) {
+  async login(req, res) {
     try {
       // corresponds to the request
       const { company_id, emp_id, password } = req.body;

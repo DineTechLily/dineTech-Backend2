@@ -25,6 +25,10 @@ const cartSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    "number": {
+      type: Number,
+      required: true
+    },
     "cust_name1": {
       type: String
     },
@@ -41,6 +45,15 @@ const cartSchema = new mongoose.Schema(
       type: String
     },
     "cust_price2": {
+      type: Number
+    },
+    "cust_name3": {
+      type: String
+    },
+    "cust_description3": {
+      type: String
+    },
+    "cust_price3": {
       type: Number
     },
     "edit_id": {

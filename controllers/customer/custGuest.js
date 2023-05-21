@@ -9,17 +9,12 @@ const guest = {
     const table_id = times.getTime();
     let order_id;
 
-    // 會有兩種情況
-    // 加點單，已經有來過，檢查我存下來timestamp的table_id，把order_id存進去
-    // 第一次點單，檢查不到，所以會創建一個新的table_id
-
     const newGuest = { time, table, people, order_id, table_id };
     try {
-      // const doc = await Guest.findOne({table_id: })
 
       const data = await Guest.create(newGuest);
-      console.log(data)
       const order_id = data._id.toString();
+      
       await Guest.updateOne({
         table_id: table_id
       },{

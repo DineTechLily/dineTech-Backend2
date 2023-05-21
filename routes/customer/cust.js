@@ -15,7 +15,7 @@ router.get("/cart/:order_id",         CartControllers.getCart);
 router.post("/cart",                  CartControllers.postCart);
 router.patch("/cart",                 CartControllers.patchCart);
 router.delete("/cart",                CartControllers.deleteCart);
-// router.get("/cart/details/:table_id", CartControllers.getCartDetails);
+router.get("/cart/details/:table_id", CartControllers.getCartDetails);
 
 router.post("/order",                 OrderControllers.postOrder);    
 
