@@ -23,14 +23,32 @@ const cart = {
     }
   },
   async postCart (req, res) {
-    const { order_id, category, name, price, description, img, number, cust_name1, cust_description1, cust_price1, cust_name2, cust_description2, cust_price2, cust_name3, cust_description3, cust_price3 }= req.body;
-    const newCart = { order_id, category, name, price, description, img, number, cust_name1, cust_description1, cust_price1, cust_name2, cust_description2, cust_price2, cust_name3, cust_description3, cust_price3 };
+    const data = req.body;
+    
+    const newCart = {
+      order_id: data.order_id,
+      category: data.category,
+      name: data.name,
+      price: data.price,
+      description: data.description,
+      img: data.img, 
+      number: data.number,
+      total_price: data.total_price,
+    };
+
+    for (let i = 0; i < data.cust.length; i++) {
+      const cust = data.cust[i];
+      newCart[`cust_name${i + 1}`] = cust.name;
+      newCart[`cust_price${i + 1}`] = cust.price;
+    }
+
     try {
       const data = await Cart.create(newCart);
 
       res.status(200).json({
         "success": true,
         "message": "send data success",
+        "data": data
       });
     }
     catch (error) {
@@ -41,20 +59,33 @@ const cart = {
   },
   async patchCart (req, res) {
     // cust_name先放著對應
-    const { edit_id, number, cust_name1, cust_description1, cust_price1, cust_name2, cust_description2, cust_price2, cust_name3, cust_description3, cust_price3 } = req.body;
+    const data = req.body;
     // 只會編輯客製化，客製化name不會變動，只有內容跟錢會變動
     try {
+      const edit = {
+        edit_id: data.edit_id,
+        number: data.number,
+        total_price: data.total_price,
+      }
+
+      for (let i = 0; i < data.cust.length; i++) {
+        const cust = data.cust[i];
+        edit[`cust_name${i + 1}`] = cust.name;
+        edit[`cust_price${i + 1}`] = cust.price;
+      }
+      console.log(edit)
       const data = await Cart.findOneAndUpdate(
         {
           _id: edit_id
         },{
           $set: {
             number: number,
-            cust_description1: cust_description1, 
+            total_price: total_price,
+            cust_name1: cust_name1, 
             cust_price1: cust_price1, 
-            cust_description2: cust_description2, 
+            cust_name2: cust_name2, 
             cust_price2: cust_price2,
-            cust_description3: cust_description3, 
+            cust_name3: cust_name3, 
             cust_price3: cust_price3
           }
         },{

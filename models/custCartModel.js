@@ -29,10 +29,11 @@ const cartSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
-    "cust_name1": {
-      type: String
+    "total_price": {
+      type: Number,
+      required: true
     },
-    "cust_description1": {
+    "cust_name1": {
       type: String
     },
     "cust_price1": {
@@ -41,16 +42,10 @@ const cartSchema = new mongoose.Schema(
     "cust_name2": {
       type: String
     },
-    "cust_description2": {
-      type: String
-    },
     "cust_price2": {
       type: Number
     },
     "cust_name3": {
-      type: String
-    },
-    "cust_description3": {
       type: String
     },
     "cust_price3": {
