@@ -5,7 +5,7 @@ const menu = {
   async getMenu(_, res) {
     try {
       const data_single = await Item.find();
-      const data_combine = await Meal.find();
+      // const data_combine = await Meal.find();
       
       const data_item = data_single.map((item) => {
         let newData = {
@@ -20,13 +20,16 @@ const menu = {
             {
                 "name": "加麵",
                 "price": 20,
+                "type": "checkbox",
             },
             {
                 "name": "加起司",
                 "price": 30,
+                "type": "checkbox",
             },
             {
               "name": "辣度",
+              "type": "radio",
               "options":[
                 {
                   "name":"不辣",
@@ -48,6 +51,7 @@ const menu = {
             newData.customization.push({
               name: item.product.customization[i].name,
               price: item.product.customization[i].price,
+              type: "checkbox",
             });
           }
         }
@@ -55,13 +59,15 @@ const menu = {
         return newData;
       })
       
-      
-      console.log(data_item)
+
+      // const data_meal = data_combined.map((item) => {
+
+      // })
 
       res.status(200).json({
         success: true,
         data_item: data_item,
-        data_set: data_combine,
+        // data_set: data_meal,
       });
     } catch (error) {
       console.log(error);
