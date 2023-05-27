@@ -8,12 +8,30 @@ const cart = {
     const order_id = req.params.order_id;
 
     try {
-      const data = await Cart.find({order_id: order_id});
-      
+      const data = await Cart.find({order_id: order_id}).lean();
+
+      const all = data.map(item => {
+        const cust = [];
+        for (let i = 1; i <= 3; i++) {
+          const custName = item[`cust_name${i}`];
+          const custPrice = item[`cust_price${i}`];
+          if (custName && custPrice) {
+            cust.push({
+              name: custName,
+              price: custPrice
+            });
+          }
+          delete item[`cust_name${i}`];
+          delete item[`cust_price${i}`];
+        }
+        item.cust = cust;
+        delete item.__v;
+        return item;
+      });
+
       res.status(200).json({
         "success": true,
-        "message": "send data success",
-        "data": data
+        "data": all,
       });
     }
     catch (error) {
@@ -60,14 +78,15 @@ const cart = {
   async patchCart (req, res) {
     // cust_name先放著對應
     const data = req.body;
-    // 只會編輯客製化，客製化name不會變動，只有內容跟錢會變動
+    console.log(data)
     try {
+      console.log("data")
       const edit = {
         edit_id: data.edit_id,
         number: data.number,
         total_price: data.total_price,
       }
-
+      console.log(edit)
       for (let i = 0; i < data.cust.length; i++) {
         const cust = data.cust[i];
         edit[`cust_name${i + 1}`] = cust.name;
