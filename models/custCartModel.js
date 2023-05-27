@@ -50,10 +50,7 @@ const cartSchema = new mongoose.Schema(
     },
     "cust_price3": {
       type: Number
-    },
-    "edit_id": {
-      type: String,
-    },
+    }
   }
 );
 const Cart = mongoose.model('Cart', cartSchema);

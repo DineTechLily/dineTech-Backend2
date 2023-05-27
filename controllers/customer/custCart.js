@@ -76,45 +76,32 @@ const cart = {
     }
   },
   async patchCart (req, res) {
-    // cust_name先放著對應
-    const data = req.body;
-    console.log(data)
     try {
-      console.log("data")
+      const data = req.body;
+      
       const edit = {
         edit_id: data.edit_id,
         number: data.number,
         total_price: data.total_price,
       }
-      console.log(edit)
       for (let i = 0; i < data.cust.length; i++) {
         const cust = data.cust[i];
         edit[`cust_name${i + 1}`] = cust.name;
         edit[`cust_price${i + 1}`] = cust.price;
       }
-      console.log(edit)
-      const data = await Cart.findOneAndUpdate(
-        {
-          _id: edit_id
-        },{
-          $set: {
-            number: number,
-            total_price: total_price,
-            cust_name1: cust_name1, 
-            cust_price1: cust_price1, 
-            cust_name2: cust_name2, 
-            cust_price2: cust_price2,
-            cust_name3: cust_name3, 
-            cust_price3: cust_price3
-          }
-        },{
+
+      const edit_data = await Cart.findOneAndUpdate({
+          _id: data.edit_id,
+        },
+          edit
+        ,{
           new: true
-        }
-      )
+        })
+
       res.status(200).json({
         "success": true,
         "message": "send data success",
-        // "data": data
+        "data": edit_data
       });
     }
     catch (error) {
