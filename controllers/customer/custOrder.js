@@ -16,13 +16,13 @@ const order = {
 
       // Add a new order_id to guest_database
       const newOrderId = (new mongoose.Types.ObjectId()).toString();
-      // await Guest.updateOne({ 
-      //   table_id: table_id, 
-      // },{
-      //   $push: {
-      //     order_id: newOrderId,
-      //   }
-      // })
+      await Guest.updateOne({ 
+        table_id: table_id, 
+      },{
+        $push: {
+          order_id: newOrderId,
+        }
+      })
       const data = {
         new_order_id: newOrderId,
       }
