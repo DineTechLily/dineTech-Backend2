@@ -15,6 +15,7 @@ const menu = {
           price: item.product.price,
           description: item.product.description,
           img: item.product.img,
+          stock: item.stock,
           customization: item.product.category === "pasta"
           ?[
             {
