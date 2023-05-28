@@ -14,19 +14,22 @@ const order = {
       const cart = await Cart.find({order_id: order_id});
       await Order.insertMany(cart);
 
-      // Add a new order_id to guest
+      // Add a new order_id to guest_database
       const newOrderId = (new mongoose.Types.ObjectId()).toString();
-      await Guest.updateOne({ 
-        table_id: table_id, 
-      },{
-        $push: {
-          order_id: newOrderId,
-        }
-      })
-
+      // await Guest.updateOne({ 
+      //   table_id: table_id, 
+      // },{
+      //   $push: {
+      //     order_id: newOrderId,
+      //   }
+      // })
+      const data = {
+        new_order_id: newOrderId,
+      }
       res.status(200).json({
         success: true,
         message: "send data success",
+        data: data,
       });
     } catch (error) {
       res.status(400).json({

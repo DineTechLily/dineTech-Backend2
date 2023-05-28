@@ -4,7 +4,7 @@ const LoginControllers = require("../../controllers/employee/empLogin");
 const TableControllers = require("../../controllers/employee/empTable");
 // const DoneControllers = require("../../controllers/employee/empDone");
 // const OrderControllers = require("../../controllers/employee/empOrder");
-// const CheckControllers = require("../../controllers/employee/empCheck");
+const CheckControllers = require("../../controllers/employee/empCheck");
 
 // register just for testing purposes
 router.post("/register",      LoginControllers.register);
@@ -17,6 +17,6 @@ router.get("/table/:table_id", TableControllers.getOrder);
 // router.get("/done/:table_id", DoneControllers.);
 
 // router.patch("/order", OrderControllers.);
-// router.patch("/check", CheckControllers.);
+router.patch("/check",         CheckControllers.patchCheck);
 
 module.exports = router;

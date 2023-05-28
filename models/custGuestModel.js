@@ -18,6 +18,10 @@ const guestSchema = new mongoose.Schema(
     table_id: {
       type: Number
     },
+    payment: {
+      type: Boolean,
+      default: false
+    }
   }
 );
 const Guest = mongoose.model('Guest', guestSchema);
