@@ -9,13 +9,12 @@ const cart = {
 
     try {
       const data = await Cart.find({order_id: order_id}).lean();
-
       const all = data.map(item => {
         const cust = [];
         for (let i = 1; i <= 3; i++) {
           const custName = item[`cust_name${i}`];
           const custPrice = item[`cust_price${i}`];
-          if (custName && custPrice) {
+          if (custName) {
             cust.push({
               name: custName,
               price: custPrice
@@ -62,7 +61,6 @@ const cart = {
 
     try {
       const data = await Cart.create(newCart);
-
       res.status(200).json({
         "success": true,
         "message": "send data success",
