@@ -78,12 +78,18 @@ const cart = {
   async patchCart (req, res) {
     try {
       const data = req.body;
-      
       const edit = {
         edit_id: data.edit_id,
         number: data.number,
         total_price: data.total_price,
+        cust_name1: null,
+        cust_price1: null,
+        cust_name2: null,
+        cust_price2: null,
+        cust_name3: null,
+        cust_price3: null,
       }
+      
       for (let i = 0; i < data.cust.length; i++) {
         const cust = data.cust[i];
         edit[`cust_name${i + 1}`] = cust.name;
@@ -96,8 +102,8 @@ const cart = {
           edit
         ,{
           new: true
-        })
-
+        }
+      )
       res.status(200).json({
         "success": true,
         "message": "send data success",
@@ -105,6 +111,7 @@ const cart = {
       });
     }
     catch (error) {
+      console.log(error)
       res.status(400).json({
         "message": error
       })
