@@ -1,6 +1,7 @@
 const Cart = require('../../models/custCartModel');
 const Order = require('../../models/custOrderModel');
 const Guest = require('../../models/custGuestModel');
+const Product = require("../../models/productModel");
 
 const cart = {
   
@@ -9,7 +10,10 @@ const cart = {
 
     try {
       const data = await Cart.find({order_id: order_id}).lean();
-      const all = data.map(item => {
+      
+      const all = await Promise.all(data.map(async (item) => {
+        const id = (await Product.find({name: item.name}))[0]._id.toString();
+
         const cust = [];
         for (let i = 1; i <= 3; i++) {
           const custName = item[`cust_name${i}`];
@@ -23,10 +27,11 @@ const cart = {
           delete item[`cust_name${i}`];
           delete item[`cust_price${i}`];
         }
+        item.product_id = id;
         item.cust = cust;
         delete item.__v;
         return item;
-      });
+      }));
 
       res.status(200).json({
         "success": true,

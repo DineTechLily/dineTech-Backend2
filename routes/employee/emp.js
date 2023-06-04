@@ -17,6 +17,7 @@ router.get("/table/:table_id", TableControllers.getOrder);
 // router.get("/done/:table_id", DoneControllers.);
 
 // router.patch("/order", OrderControllers.);
+router.patch("/check",         CheckControllers.getCheck);
 router.patch("/check",         CheckControllers.patchCheck);
 
 module.exports = router;

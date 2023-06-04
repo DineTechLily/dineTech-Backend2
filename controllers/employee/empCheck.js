@@ -1,8 +1,20 @@
 const Guest = require("../../models/custGuestModel");
 
 const check = {
-  async getCheck(req, res) {
+  async getCheck(_, res) {
+    try {
+      const data = await Guest.find()
+      console.log(data)
 
+      res.status(200).json({
+        success: true,
+        message: "send data success"
+      });
+    }catch (error) {
+      res.status(400).json({
+        message: error,
+      });
+    }
   },
 
   async patchCheck(req, res) {
