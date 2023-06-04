@@ -1,28 +1,26 @@
-const Guest = require("../../models/custGuestModel");
+const eOrder = require("../../models/empOrderModel");
 
 const check = {
-  async getCheck(_, res) {
-    try {
-      const data = await Guest.find()
-      console.log(data)
+  // async getCheck(_, res) {
+  //   try {
+  //     await eOrder.find()
 
-      res.status(200).json({
-        success: true,
-        data: data
-      });
-    }catch (error) {
-      console.log(error)
-      res.status(400).json({
-        message: error,
-      });
-    }
-  },
+  //     res.status(200).json({
+  //       success: true,
+  //       data: data
+  //     });
+  //   }catch (error) {
+  //     res.status(400).json({
+  //       message: error,
+  //     });
+  //   }
+  // },
 
   async patchCheck(req, res) {
     try {
       const { table_id } = req.body;
-      console.log(table_id);
-      const data = await Guest.updateOne({
+
+      const data = await eOrder.updateOne({
         table_id: table_id,
       },{
         $set:{
@@ -31,7 +29,7 @@ const check = {
       },{
         new: true
       })
-      console.log(data);
+
       res.status(200).json({
         success: true,
         message: "send data success"
