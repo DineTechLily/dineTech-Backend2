@@ -17,6 +17,9 @@ const order = {
       const cart = await Cart.find({order_id: order_id}).lean();
       const updatedCart = cart.map(item => ({ ...item, finished: false }));
 
+      const times = new Date;
+      const postTime = times.toISOString();
+      
       // Move the cart data to the order schema
       await Order.insertMany(updatedCart);
 
@@ -27,6 +30,7 @@ const order = {
       },{
         $push: {
           order_id: newOrderId,
+          order_time: postTime
         }
       })
       const data = {

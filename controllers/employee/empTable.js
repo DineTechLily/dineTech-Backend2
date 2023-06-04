@@ -5,6 +5,7 @@ const table = {
   async getTable(_, res) {
     try {
       const data = await Guest.find();
+
       res.status(200).json({
         success: true,
         data: data,
@@ -15,7 +16,7 @@ const table = {
       });
     }
   },
-  async getOrder(req, res) {
+  async getAllOrder(req, res) {
     const table_id = req.params.table_id;
 
     try {

@@ -15,6 +15,9 @@ const guestSchema = new mongoose.Schema(
     order_id: {
       type: [ String ]
     },
+    order_time: {
+      type: [ String ]
+    },
     table_id: {
       type: Number
     },

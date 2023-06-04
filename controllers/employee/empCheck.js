@@ -8,9 +8,10 @@ const check = {
 
       res.status(200).json({
         success: true,
-        message: "send data success"
+        data: data
       });
     }catch (error) {
+      console.log(error)
       res.status(400).json({
         message: error,
       });

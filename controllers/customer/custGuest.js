@@ -7,9 +7,9 @@ const guest = {
     const times = new Date;
     const time = times.toISOString();
     const table_id = times.getTime();
-    let order_id;
+    let order_id, order_time;
 
-    const newGuest = { time, table, people, order_id, table_id };
+    const newGuest = { time, table, people, order_id, order_time, table_id };
     try {
 
       const data = await Guest.create(newGuest);
