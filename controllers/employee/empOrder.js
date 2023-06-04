@@ -1,19 +1,18 @@
 const mongoose = require("mongoose");
 const Order = require("../../models/custOrderModel");
-const Guest = require("../../models/custGuestModel");
+const eOrder = require("../../models/empOrderModel");
 
 const order = {
   async getOrder(req, res){
     const order_id = req.params.order_id;
 
     try {
+      // 撈所有菜單出來檢查是否全部都完成
       const data = await Order.find({order_id: order_id});
-
       const allFinished = data.every(item => item.finished === true);
-      console.log(allFinished);
 
       if (allFinished === true) {
-        await Guest.updateOne({ 
+        await eOrder.updateOne({ 
           _id: order_id, 
         },{
           $set: {
@@ -21,7 +20,6 @@ const order = {
           }
         })
       }
-
 
       res.status(200).json({
         "success": true,

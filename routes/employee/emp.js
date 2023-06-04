@@ -10,7 +10,8 @@ router.post("/register",      LoginControllers.register);
 router.post("/login",         LoginControllers.login);
 router.post("/logout",        LoginControllers.logout);
 
-router.get("/table",           TableControllers.getTable);
+router.get("/order",           TableControllers.getOrderTicket);
+router.get("/order/done",           TableControllers.getOrderDoneTicket);
 
 // 2.4.2
 router.get("/order/:order_id", OrderControllers.getOrder);

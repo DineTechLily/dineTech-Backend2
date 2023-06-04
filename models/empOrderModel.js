@@ -21,6 +21,9 @@ const eOrderSchema = new mongoose.Schema(
     table_id: {
       type: Number
     },
+    finished: {
+      type: Boolean
+    },
     payment: {
       type: Boolean,
       default: false
