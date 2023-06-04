@@ -18,8 +18,8 @@ const order = {
       const updatedCart = cart.map(item => ({ ...item, finished: false }));
 
       const times = new Date;
-      const postTime = times.toISOString();
-      
+      const postTime = times.toLocaleString('en-US', { timeZone: 'Asia/Taipei' });
+
       // Move the cart data to the order schema
       await Order.insertMany(updatedCart);
 

@@ -149,8 +149,26 @@ const cart = {
       const data = [];
 
       for (let i = 0; i < order_list.length; i++) {
-        let order = await Order.find({order_id: order_list[i]})
-        data.push(order)
+        const order = await Order.find({order_id: order_list[i]}).lean();
+        const all = await order.map((item) => {
+          const cust = [];
+          for (let i = 1; i <= 3; i++) {
+            const custName = item[`cust_name${i}`];
+            const custPrice = item[`cust_price${i}`];
+            if (custName) {
+              cust.push({
+                name: custName,
+                price: custPrice
+              });
+            }
+            delete item[`cust_name${i}`];
+            delete item[`cust_price${i}`];
+          }
+          item.cust = cust;
+          delete item.__v;
+          return item;
+        });
+        data.push(all)
       }
 
       res.status(200).json({
