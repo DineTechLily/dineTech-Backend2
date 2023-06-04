@@ -55,6 +55,10 @@ const orderSchema = new mongoose.Schema(
     "cust_price3": {
       type: Number
     },
+    "finished": {
+      type: Boolean,
+      default: false
+    }
   }
 );
 const Order = mongoose.model('Order', orderSchema);

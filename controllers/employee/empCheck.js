@@ -1,8 +1,11 @@
 const Guest = require("../../models/custGuestModel");
 
 const check = {
+  async getCheck(req, res) {
+
+  },
+
   async patchCheck(req, res) {
-    
     try {
       const { table_id } = req.body;
       console.log(table_id);

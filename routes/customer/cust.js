@@ -8,6 +8,7 @@ const OrderControllers = require("../../controllers/customer/custOrder");
 const FeedbackControllers = require("../../controllers/customer/custFeedback");
 
 router.get("/menu",                   MenuControllers.getMenu);
+router.get("/menu/:id",               MenuControllers.getMenuId);
 
 router.post("/guest",                 GuestControllers.postGuest);
 

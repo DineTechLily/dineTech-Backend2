@@ -14,10 +14,11 @@ const order = {
     const {order_id, table_id} = req.body;
     
     try {
-      const cart = await Cart.find({order_id: order_id});
-      
+      const cart = await Cart.find({order_id: order_id}).lean();
+      const updatedCart = cart.map(item => ({ ...item, finished: false }));
+
       // Move the cart data to the order schema
-      await Order.insertMany(cart);
+      await Order.insertMany(updatedCart);
 
       // Add a new order_id to guest_database
       const newOrderId = (new mongoose.Types.ObjectId()).toString();

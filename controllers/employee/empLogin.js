@@ -9,7 +9,7 @@ const Login = {
   async register(req, res) {
     try {
       password = await bcrypt.hash(req.body.password, 12);
-      //console.log(req.body.emp_id+req.body.emp_id)
+
       const newAccount = await Account.create({
         account: req.body.company_id + req.body.emp_id,
         password: password,
