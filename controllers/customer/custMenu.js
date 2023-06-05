@@ -71,16 +71,16 @@ const menu = {
         // data_set: data_meal,
       });
     } catch (error) {
-      console.log(error);
+      res.status(400).json({
+        message: error,
+      });
     }
   },
   async getMenuId(req, res) {
     const id = req.params.id;
-    console.log(id);
     try {
       const data_single = await Item.find({ product: id }).lean();
       // const data_combine = await Meal.find();
-      console.log(data_single);
       const data_item = data_single.map((item) => {
         let newData = {
           _id: item.product._id,
@@ -145,7 +145,9 @@ const menu = {
         // data_set: data_meal,
       });
     } catch (error) {
-      console.log(error);
+      res.status(400).json({
+        message: error,
+      });
     }
   },
 };

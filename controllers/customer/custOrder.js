@@ -21,7 +21,6 @@ const order = {
       const times = new Date();
       times.setUTCHours(times.getUTCHours() + 8);
       const postTime = times.toISOString();
-      console.log(postTime);
 
       // Move the cart data to the order schema
       await Order.insertMany(updatedCart);

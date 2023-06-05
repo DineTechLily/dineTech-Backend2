@@ -19,7 +19,9 @@ const Login = {
         post: newAccount,
       });
     } catch (error) {
-      console.log(error);
+      res.status(400).json({
+        message: error,
+      });
     }
   },
   async login(req, res) {
@@ -60,7 +62,9 @@ const Login = {
         });
       }
     } catch (error) {
-      console.log(error);
+      res.status(400).json({
+        message: error,
+      });
     }
   },
   async logout(_, res) {
@@ -69,7 +73,9 @@ const Login = {
         message: "logout success, remember to remove token",
       });
     } catch (error) {
-      console.log(error);
+      res.status(400).json({
+        message: error,
+      });
     }
   },
 };
