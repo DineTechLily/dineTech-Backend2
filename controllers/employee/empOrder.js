@@ -36,17 +36,17 @@ const order = {
     try {
       // 撈所有菜單出來檢查是否全部都完成
       const data = await Order.find({order_id: order_id});
-      const allFinished = data.every(item => item.finished === true);
+      // const allFinished = data.every(item => item.finished === true);
 
-      if (allFinished === true) {
-        await eOrder.updateOne({ 
-          _id: order_id, 
-        },{
-          $set: {
-            finished: true
-          }
-        })
-      }
+      // if (allFinished === true) {
+      //   await eOrder.updateOne({ 
+      //     _id: order_id, 
+      //   },{
+      //     $set: {
+      //       finished: true
+      //     }
+      //   })
+      // }
 
       res.status(200).json({
         "success": true,
@@ -71,12 +71,28 @@ const order = {
           finished: true
         }
       })
+      
+      // 撈所有菜單出來檢查是否全部都完成
+      const result = await Order.findOne({ _id: product_id }).select('order_id');
+      const data = await Order.find({order_id: result.order_id});
+      const allFinished = data.every(item => item.finished === true);
+
+      if (allFinished === true) {
+        await eOrder.updateOne({ 
+          _id: result.order_id, 
+        },{
+          $set: {
+            finished: true
+          }
+        })
+      }
 
       res.status(200).json({
         success: true,
         message: "send data success",
       });
     } catch (error) {
+      console.log(error);
       res.status(400).json({
         message: error,
       });
