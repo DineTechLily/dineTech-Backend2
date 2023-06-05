@@ -1,8 +1,35 @@
-const mongoose = require("mongoose");
 const Order = require("../../models/custOrderModel");
 const eOrder = require("../../models/empOrderModel");
 
 const order = {
+  async getOrderTicket(_, res) {
+    try {
+      const data = await eOrder.find({finished: false});
+
+      res.status(200).json({
+        success: true,
+        data: data,
+      });
+    } catch (error) {
+      res.status(400).json({
+        message: error,
+      });
+    }
+  },
+  async getOrderDoneTicket(_, res) {
+    try {
+      const data = await eOrder.find({ finished: true});
+
+      res.status(200).json({
+        success: true,
+        data: data,
+      });
+    } catch (error) {
+      res.status(400).json({
+        message: error,
+      });
+    }
+  },
   async getOrder(req, res){
     const order_id = req.params.order_id;
 
