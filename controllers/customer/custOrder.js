@@ -29,6 +29,7 @@ const order = {
       const guest = await Guest.find({ order_id: order_id}).lean();
       delete guest[0].order_id;
       delete guest[0].order_time;
+      delete guest[0]._id;
       guest[0].order_id = order_id;
       guest[0].order_time = postTime;
       guest[0].finished = false;
