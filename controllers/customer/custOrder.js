@@ -5,7 +5,7 @@ const Guest = require("../../models/custGuestModel");
 const eOrder = require("../../models/empOrderModel");
 
 // 扣庫存
-// const Item = require("../../models/itemModel")
+const Item = require("../../models/itemModel")
 
 // 這裡要做一個如果送重複訂單的error function
 // 但應該只會發生在develop
@@ -37,8 +37,8 @@ const order = {
 
       // Add a new order_id to guest_database
       const newOrderId = (new mongoose.Types.ObjectId()).toString();
-      await Guest.updateOne({ 
-        table_id: table_id, 
+      await Guest.updateOne({
+        table_id: table_id,
       },{
         $push: {
           order_id: newOrderId,
@@ -50,11 +50,20 @@ const order = {
       }
 
       // 扣庫存
+      for (i=0; i<cart.length; i++) {
+        await Item.updateOne({
+          name: cart[i].name,
+        },{
+          $inc: {
+            stock: -1 
+          }
+        })
+      }
 
       res.status(200).json({
         success: true,
         message: "send data success",
-        data: data,
+        data: "data",
       });
     } catch (error) {
       res.status(400).json({
