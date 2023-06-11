@@ -3,12 +3,7 @@ const Cart = require("../../models/custCartModel");
 const Order = require("../../models/custOrderModel");
 const Guest = require("../../models/custGuestModel");
 const eOrder = require("../../models/empOrderModel");
-
-// 扣庫存
 const Item = require("../../models/itemModel")
-
-// 這裡要做一個如果送重複訂單的error function
-// 但應該只會發生在develop
 
 const order = {
   async postOrder(req, res) {

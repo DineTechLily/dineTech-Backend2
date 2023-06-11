@@ -2,10 +2,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Account = require("../../models/staffLoginModels");
 
-// message
 const loginFailedError = { message: "Login Failed, Please Try Again!" };
 
 const Login = {
+  // the register function is only for develoopment
   async register(req, res) {
     try {
       password = await bcrypt.hash(req.body.password, 12);

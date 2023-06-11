@@ -1,6 +1,5 @@
 const Guest = require('../../models/custGuestModel');
-// order id is sort by table id
-// 有找到就新增，沒有就創建一個新的guest
+
 const guest = {
   async postGuest (req, res) {
     const { table, people } = req.body;

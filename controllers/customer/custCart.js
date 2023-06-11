@@ -4,7 +4,7 @@ const Guest = require('../../models/custGuestModel');
 const Product = require("../../models/productModel");
 
 const cart = {
-  
+
   async getCart (req, res) {
     const order_id = req.params.order_id;
 
@@ -12,8 +12,10 @@ const cart = {
       const data = await Cart.find({order_id: order_id}).lean();
       
       const all = await Promise.all(data.map(async (item) => {
+        // 將DB object_id 改成string
         const id = (await Product.find({name: item.name}))[0]._id.toString();
 
+        // 將前端需要的資料型態轉成適合DB存的datatype
         const cust = [];
         for (let i = 1; i <= 3; i++) {
           const custName = item[`cust_name${i}`];
@@ -57,7 +59,7 @@ const cart = {
       number: data.number,
       total_price: data.total_price,
     };
-
+    // 將object攤開成array新增進去資料庫
     for (let i = 0; i < data.cust.length; i++) {
       const cust = data.cust[i];
       newCart[`cust_name${i + 1}`] = cust.name;
@@ -92,7 +94,8 @@ const cart = {
         cust_name3: null,
         cust_price3: null,
       }
-      
+
+      // 將object攤開成array新增進去資料庫
       for (let i = 0; i < data.cust.length; i++) {
         const cust = data.cust[i];
         edit[`cust_name${i + 1}`] = cust.name;
@@ -146,6 +149,7 @@ const cart = {
       const order_list = all_order[0].order_id;
       const data = [];
 
+      // 將資料庫的array型態轉成object
       for (let i = 0; i < order_list.length; i++) {
         const order = await Order.find({order_id: order_list[i]}).lean();
         const all = await order.map((item) => {

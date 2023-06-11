@@ -5,7 +5,6 @@ const menu = {
   async getMenu(_, res) {
     try {
       const data_single = await Item.find();
-      // const data_combine = await Meal.find();
       
       const data_item = data_single.map((item) => {
         let newData = {
@@ -16,6 +15,7 @@ const menu = {
           description: item.product.description,
           img: item.product.img,
           stock: item.stock,
+          // 麵類客製化需要區分單複選
           customization: item.product.category === "pasta"
           ?[
             {
@@ -56,19 +56,12 @@ const menu = {
             });
           }
         }
-
         return newData;
       })
-      
-
-      // const data_meal = data_combined.map((item) => {
-
-      // })
 
       res.status(200).json({
         success: true,
         data_item: data_item,
-        // data_set: data_meal,
       });
     } catch (error) {
       res.status(400).json({
@@ -79,8 +72,9 @@ const menu = {
   async getMenuId(req, res) {
     const id = req.params.id;
     try {
+      // lean() 需要編輯內部資料庫讀出來的資料需要
       const data_single = await Item.find({ product: id }).lean();
-      // const data_combine = await Meal.find();
+
       const data_item = data_single.map((item) => {
         let newData = {
           _id: item.product._id,
@@ -133,16 +127,10 @@ const menu = {
 
         return newData;
       })
-      
-
-      // const data_meal = data_combined.map((item) => {
-
-      // })
 
       res.status(200).json({
         success: true,
         data_item: data_item,
-        // data_set: data_meal,
       });
     } catch (error) {
       res.status(400).json({

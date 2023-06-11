@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const LoginControllers = require("../../controllers/employee/empLogin");
-// const TableControllers = require("../../controllers/employee/empTable");
 const OrderControllers = require("../../controllers/employee/empOrder");
 const CheckControllers = require("../../controllers/employee/empCheck");
 
@@ -16,8 +15,5 @@ router.get("/order/:order_id", OrderControllers.getOrder);
 router.patch("/order",         OrderControllers.patchOrder);
 
 router.patch("/check",         CheckControllers.patchCheck);
-// router.get("/check",           CheckControllers.getCheck);
-// 2.4.2
-// router.get("/table/:table_id", TableControllers.getAllOrder);
 
 module.exports = router;
