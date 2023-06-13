@@ -55,15 +55,15 @@ const order = {
         _id: product_id, 
       },{
         $set: {
-          finished: true
+          finished: "true"
         }
       })
       
       // 撈所有菜單出來檢查是否全部都完成
       const result = await Order.findOne({ _id: product_id }).select('order_id');
       const data = await Order.find({order_id: result.order_id});
-      const allFinished = data.every(item => item.finished === true);
-
+      const allFinished = data.every(item => item.finished !== "false");
+      console.log(allFinished)
       if (allFinished === true) {
         await eOrder.updateOne({ 
           _id: result.order_id, 
@@ -84,5 +84,42 @@ const order = {
       });
     }
   },
+  async patchAbandon(req, res) {
+    const { product_id } = req.body;
+    
+    try {
+      await Order.updateOne({ 
+        _id: product_id, 
+      },{
+        $set: {
+          finished: "abandoned",
+        }
+      })
+
+      // 撈所有菜單出來檢查是否全部都完成
+      const result = await Order.findOne({ _id: product_id }).select('order_id');
+      const data = await Order.find({order_id: result.order_id});
+      const allFinished = data.every(item => item.finished !== "false");
+      console.log(allFinished)
+      if (allFinished === true) {
+        await eOrder.updateOne({ 
+          _id: result.order_id, 
+        },{
+          $set: {
+            finished: true
+          }
+        })
+      }
+      
+      res.status(200).json({
+        success: true,
+        message: "send data success",
+      });
+    } catch (error) {
+      res.status(400).json({
+        message: error,
+      });
+    }
+  }
 };
 module.exports = order;

@@ -13,6 +13,7 @@ router.get("/order",           OrderControllers.getOrderTicket);
 router.get("/order/done",      OrderControllers.getOrderDoneTicket);
 router.get("/order/:order_id", OrderControllers.getOrder);
 router.patch("/order",         OrderControllers.patchOrder);
+router.patch("/order/abandon", OrderControllers.patchAbandon);
 
 router.patch("/check",         CheckControllers.patchCheck);
 

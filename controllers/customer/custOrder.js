@@ -11,7 +11,7 @@ const order = {
     
     try {
       const cart = await Cart.find({order_id: order_id}).lean();
-      const updatedCart = cart.map(item => ({ ...item, finished: false }));
+      const updatedCart = cart.map(item => ({ ...item, finished: "false" }));
 
       const times = new Date();
       times.setUTCHours(times.getUTCHours() + 8);

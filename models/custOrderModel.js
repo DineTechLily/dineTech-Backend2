@@ -56,8 +56,8 @@ const orderSchema = new mongoose.Schema(
       type: Number
     },
     "finished": {
-      type: Boolean,
-      default: false
+      type: String,
+      default: "false"
     }
   }
 );
