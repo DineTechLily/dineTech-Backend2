@@ -63,14 +63,16 @@ const order = {
       const result = await Order.findOne({ _id: product_id }).select('order_id');
       const data = await Order.find({order_id: result.order_id});
       const allFinished = data.every(item => item.finished !== "false");
-      console.log(allFinished)
+
       if (allFinished === true) {
-        await eOrder.updateOne({ 
-          _id: result.order_id, 
+        await eOrder.findOneAndUpdate({ 
+          order_id: result.order_id, 
         },{
           $set: {
             finished: true
           }
+        },{
+          new: true
         })
       }
 
@@ -100,14 +102,16 @@ const order = {
       const result = await Order.findOne({ _id: product_id }).select('order_id');
       const data = await Order.find({order_id: result.order_id});
       const allFinished = data.every(item => item.finished !== "false");
-      console.log(allFinished)
+
       if (allFinished === true) {
-        await eOrder.updateOne({ 
-          _id: result.order_id, 
+        await eOrder.findOneAndUpdate({ 
+          order_id: result.order_id, 
         },{
           $set: {
             finished: true
           }
+        },{
+          new: true
         })
       }
       
