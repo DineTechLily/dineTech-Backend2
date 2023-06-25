@@ -3,7 +3,8 @@
 /**
  * Module dependencies.
  */
-
+const WebSocket = require('ws');
+const Order = require('../models/custOrderModel')
 const app = require("../app");
 const debug = require("debug")("myapp:server");
 const http = require("http");
@@ -84,3 +85,35 @@ function onListening() {
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   debug("Listening on " + bind);
 }
+
+const wss = new WebSocket.Server({ port: 3000 });
+
+wss.on('connection', (ws) => {
+  console.log('WebSocket connected');
+
+  // 监听WebSocket消息
+  ws.on('message', async (message) => {
+    console.log('Received WebSocket message:', message);
+
+    // 解析消息内容
+    const { action, data } = JSON.parse(message);
+    console.log(action)
+    if (action === 'getOrders') {
+      try {
+        // 在数据库中查询order模式的数据
+        const Order = mongoose.model('Order');
+        const orders = await Order.find().exec();
+        console.log(orders)
+        // 将查询结果发送给客户端
+        ws.send(JSON.stringify(orders));
+      } catch (error) {
+        console.error('Error querying database:', error);
+      }
+    }
+  });
+
+  // 当WebSocket连接关闭时
+  ws.on('close', () => {
+    console.log('WebSocket disconnected');
+  });
+});

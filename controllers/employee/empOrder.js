@@ -1,5 +1,31 @@
 const Order = require("../../models/custOrderModel");
 const eOrder = require("../../models/empOrderModel");
+// const WebSocket = require("ws");
+
+
+// // 建立 WebSocket 伺服器
+// const wss = new WebSocket.Server({ port: 4000 });
+
+// // WebSocket 連線事件處理
+// wss.on('connection', (ws) => {
+//   console.log('WebSocket connected');
+
+//   // 接收來自客戶端的訊息
+//   ws.on('message', (message) => {
+//     console.log('Received message:', message);
+//     // 在這裡處理接收到的訊息，執行相應的邏輯
+//   });
+
+//   // 傳送訊息給客戶端
+//   ws.send('Hello, client!');
+
+//   // 關閉連線事件
+//   ws.on('close', () => {
+//     console.log('WebSocket disconnected');
+//     // 在這裡處理 WebSocket 連線關閉事件的相關邏輯
+//   });
+// });
+
 
 const order = {
   async getOrderTicket(_, res) {
