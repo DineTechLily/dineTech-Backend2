@@ -4,6 +4,15 @@ const Order = require("../../models/custOrderModel");
 const Guest = require("../../models/custGuestModel");
 const eOrder = require("../../models/empOrderModel");
 const Item = require("../../models/itemModel")
+const WebSocket = require('ws');
+const ws = new WebSocket('ws://localhost:3009');
+
+ws.on('open', () => {
+  console.log('connect to server')
+})
+
+ws.on('close', () => {
+})
 
 const order = {
   async postOrder(req, res) {
@@ -54,6 +63,8 @@ const order = {
           }
         })
       }
+
+      ws.send(JSON.stringify(guest));
 
       res.status(200).json({
         success: true,
