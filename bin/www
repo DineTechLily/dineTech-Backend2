@@ -3,8 +3,7 @@
 /**
  * Module dependencies.
  */
-// const WebSocket = require('ws');
-// const Order = require('../models/custOrderModel')
+
 const app = require("../app");
 const debug = require("debug")("myapp:server");
 const http = require("http");
@@ -86,34 +85,20 @@ function onListening() {
   debug("Listening on " + bind);
 }
 
-// const wss = new WebSocket.Server({ port: 3000 });
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 3009 });
 
-// wss.on('connection', (ws) => {
-//   console.log('WebSocket connected');
+wss.on('connection', (ws) => {
+  ws.on('message', (message) => {
+    wss.clients.forEach((client) => {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(message);
+      }
+    });
+    console.log(JSON.parse(message));
+    console.log("--------------------------------")
+  });
 
-//   // 監聽WebSocket消息
-//   ws.on('message', async (message) => {
-//     console.log('Received WebSocket message:', message);
-
-//     // 解析消息内容
-//     const { action, data } = JSON.parse(message);
-//     console.log(action)
-//     if (action === 'getOrders') {
-//       try {
-//         // 在DB中查詢order模式的資料
-//         const Order = mongoose.model('Order');
-//         const orders = await Order.find().exec();
-//         console.log(orders)
-//         // 將查詢结果發送给客户端
-//         ws.send(JSON.stringify(orders));
-//       } catch (error) {
-//         console.error('Error querying database:', error);
-//       }
-//     }
-//   });
-
-//   // 當WebSocket連接關閉
-//   ws.on('close', () => {
-//     console.log('WebSocket disconnected');
-//   });
-// });
+  ws.on('close', () => {
+  });
+});
