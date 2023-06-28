@@ -5,8 +5,11 @@ const wss = new WebSocket.Server({ port: 3009 });
 
 wss.on('connection', (ws) => {
   ws.on('message', (message) => {
-    console.log("--------------------------------")
-    console.log(JSON.parse(message))
+    wss.clients.forEach((client) => {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(message);
+      }
+    });
     console.log("--------------------------------")
   });
 
