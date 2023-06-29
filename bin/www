@@ -95,6 +95,7 @@ server.on("listening", () => {
           client.send(message);
         }
       });
+      console.log(JSON.parse(message));
     });
   
     ws.on('close', () => {
