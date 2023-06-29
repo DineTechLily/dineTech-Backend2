@@ -5,13 +5,14 @@ const Guest = require("../../models/custGuestModel");
 const eOrder = require("../../models/empOrderModel");
 const Item = require("../../models/itemModel")
 const WebSocket = require('ws');
-const ws = new WebSocket(`${process.env.Backend}`);
+const ws = new WebSocket('wss://dinetech-host2.onrender.com:3009');
 
 ws.on('open', () => {
   console.log('connect to server')
 })
 
 ws.on('close', () => {
+  console.log('close connection')
 })
 
 const order = {
