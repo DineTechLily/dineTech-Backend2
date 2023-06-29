@@ -5,7 +5,7 @@ const Guest = require("../../models/custGuestModel");
 const eOrder = require("../../models/empOrderModel");
 const Item = require("../../models/itemModel")
 const WebSocket = require('ws');
-const ws = new WebSocket('ws://localhost:3009');
+const ws = new WebSocket(`${process.env.Backend}`);
 
 ws.on('open', () => {
   console.log('connect to server')
@@ -69,7 +69,7 @@ const order = {
       res.status(200).json({
         success: true,
         message: "send data success",
-        data: "data",
+        data: data,
       });
     } catch (error) {
       res.status(400).json({
