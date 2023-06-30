@@ -12,9 +12,9 @@ ws.on('open', () => {
   console.log('connect to server')
 })
 
-ws.on('close', () => {
-  console.log('close connection')
-})
+// ws.on('close', () => {
+//   console.log('close connection')
+// })
 
 const order = {
   async postOrder(req, res) {
