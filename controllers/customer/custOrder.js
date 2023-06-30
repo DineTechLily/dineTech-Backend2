@@ -11,7 +11,7 @@ const ws = new WebSocket('wss://dinetech-host2.onrender.com');
 ws.on('open', () => {
   console.log('connect to server')
 })
-let guestData;
+// let guestData;
 
 // ws.on('close', () => {
 //   console.log('close connection')
@@ -67,11 +67,11 @@ const order = {
         })
       }
 
-      guestData = guest;
-      if(guestData){
-        ws.send(JSON.stringify(guestData));
-        console.log("send ws data")
-      }
+      // guestData = guest;
+      // if(guestData){
+        ws.send(JSON.stringify(guest));
+      //   console.log("send ws data")
+      // }
 
       res.status(200).json({
         success: true,
