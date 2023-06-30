@@ -8,9 +8,7 @@ const WebSocket = require('ws');
 const ws = new WebSocket('wss://dinetech-host2.onrender.com');
 // const ws = new WebSocket('ws://localhost:3006');
 
-ws.on('open', () => {
-  console.log('connect to server')
-})
+
 
 // ws.on('close', () => {
 //   console.log('close connection')
@@ -66,7 +64,10 @@ const order = {
         })
       }
 
-      ws.send(JSON.stringify(guest));
+      ws.on('open', () => {
+        console.log('connect to server')
+        ws.send(JSON.stringify(guest));
+      })
 
       res.status(200).json({
         success: true,
