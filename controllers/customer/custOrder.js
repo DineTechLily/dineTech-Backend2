@@ -5,13 +5,14 @@ const Guest = require("../../models/custGuestModel");
 const eOrder = require("../../models/empOrderModel");
 const Item = require("../../models/itemModel")
 const WebSocket = require('ws');
-const ws = new WebSocket("wss://dinetech-host2.onrender.com");
-// const ws = new WebSocket('ws://localhost:3006');
+// const ws = new WebSocket("wss://dinetech-host2.onrender.com");
+const ws = new WebSocket('ws://localhost:3006');
 
 ws.on('open', () => {
   console.log('connect to server')
 })
 let guestData;
+
 // ws.on('close', () => {
 //   console.log('close connection')
 // })
@@ -67,6 +68,11 @@ const order = {
       }
 
       guestData = guest;
+      if(guestData){
+        ws.send(JSON.stringify(guestData));
+        console.log("send ws data")
+        
+      }
 
       res.status(200).json({
         success: true,
@@ -81,6 +87,5 @@ const order = {
   },
 };
 
-ws.send(JSON.stringify(guestData));
 
 module.exports = order;
