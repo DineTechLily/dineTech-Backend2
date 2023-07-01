@@ -4,17 +4,12 @@ const Order = require("../../models/custOrderModel");
 const Guest = require("../../models/custGuestModel");
 const eOrder = require("../../models/empOrderModel");
 const Item = require("../../models/itemModel")
-const WebSocket = require('ws');
-const ws = new WebSocket('wss://dinetech-host2.onrender.com');
+// const WebSocket = require('ws');
+// const ws = new WebSocket('wss://dinetech-host2.onrender.com');
 // const ws = new WebSocket('ws://localhost:3006');
 
-ws.on('open', () => {
-  console.log('connect to server')
-})
-// let guestData;
-
-// ws.on('close', () => {
-//   console.log('close connection')
+// ws.on('open', () => {
+//   console.log('connect to server')
 // })
 
 const order = {
@@ -67,25 +62,17 @@ const order = {
         })
       }
 
-      // guestData = guest;
       // if(guestData){
-        // console.log(typeof(guest))
-        // console.log(typeof(JSON.stringify(guest)))
-        // console.log(JSON.stringify(guest))
-        ws.send(JSON.stringify(guest));
-      //   console.log("send ws data")
+        // ws.send(JSON.stringify(guest));
       // }
 
       // ws.on('open', () => {
       //   console.log('WebSocket connection is open');
-      
-      //   // 发送数据
+
       //   ws.send('Hello Server');
-      
-      //   // 完成发送后关闭 WebSocket 连接
+
       //   ws.close();
       // });
-
 
       res.status(200).json({
         success: true,
