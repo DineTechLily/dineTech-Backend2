@@ -69,6 +69,9 @@ const order = {
 
       // guestData = guest;
       // if(guestData){
+        console.log(typeof(guest))
+        console.log(typeof(JSON.stringify(guest)))
+        // console.log(JSON.stringify(guest))
         ws.send(JSON.stringify(guest));
       //   console.log("send ws data")
       // }
