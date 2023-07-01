@@ -8,9 +8,9 @@ const WebSocket = require('ws');
 const ws = new WebSocket('wss://dinetech-host2.onrender.com');
 // const ws = new WebSocket('ws://localhost:3006');
 
-ws.on('open', () => {
-  console.log('connect to server')
-})
+// ws.on('open', () => {
+//   console.log('connect to server')
+// })
 // let guestData;
 
 // ws.on('close', () => {
