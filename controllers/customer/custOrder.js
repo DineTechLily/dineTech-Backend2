@@ -5,7 +5,7 @@ const Guest = require("../../models/custGuestModel");
 const eOrder = require("../../models/empOrderModel");
 const Item = require("../../models/itemModel")
 const WebSocket = require('ws');
-const ws = new WebSocket('wss://dinetech-host2.onrender.com:3006');
+const ws = new WebSocket('wss://dinetech-host2.onrender.com');
 // const ws = new WebSocket('ws://localhost:3006');
 
 // ws.on('open', () => {
