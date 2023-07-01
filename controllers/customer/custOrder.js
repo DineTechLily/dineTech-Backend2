@@ -8,9 +8,9 @@ const WebSocket = require('ws');
 const ws = new WebSocket('wss://dinetech-host2.onrender.com');
 // const ws = new WebSocket('ws://localhost:3006');
 
-// ws.on('open', () => {
-//   console.log('connect to server')
-// })
+ws.on('open', () => {
+  console.log('connect to server')
+})
 // let guestData;
 
 // ws.on('close', () => {
@@ -69,12 +69,23 @@ const order = {
 
       // guestData = guest;
       // if(guestData){
-        console.log(typeof(guest))
-        console.log(typeof(JSON.stringify(guest)))
+        // console.log(typeof(guest))
+        // console.log(typeof(JSON.stringify(guest)))
         // console.log(JSON.stringify(guest))
         ws.send(JSON.stringify(guest));
       //   console.log("send ws data")
       // }
+
+      // ws.on('open', () => {
+      //   console.log('WebSocket connection is open');
+      
+      //   // 发送数据
+      //   ws.send('Hello Server');
+      
+      //   // 完成发送后关闭 WebSocket 连接
+      //   ws.close();
+      // });
+
 
       res.status(200).json({
         success: true,
